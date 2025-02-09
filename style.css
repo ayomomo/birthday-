@@ -1,0 +1,61 @@
+/* Ensure the body and container take up the full screen */
+body, html {
+    height: 100vh;  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0; 
+    background-color: #a1caff; 
+}
+
+/* Center the main container */
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;  /* Ensure it takes full width */
+    height: 100vh; /* Ensure it takes full height */
+}
+
+/* Style for image container */
+#image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Question text */
+#question {
+    font-family: 'Sacramento', cursive;
+    font-size: 50px;
+    text-align: center;
+}
+
+/* Button container */
+#options {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Button styling */
+button {
+    transition: 0.4s ease-in-out;
+    padding: 10px 20px; 
+    margin: 0 10px; 
+    font-size: 26px; /* Set font size for buttons */
+    font-family: 'Sacramento', cursive; /* Apply Sacramento font to the options */ 
+    border-radius: 12px;
+    border: 2px dotted #bd2679; /* Fix: Visible dotted border */
+    background-color: #FB607F; /* Fix: Default background */
+    color: white; 
+    cursor: pointer; 
+}
+
+/* Button hover effect */
+button:hover {
+    border-radius: 50%;
+    background-color: #bd2679; /* Slightly darker on hover */
+    color: white;
+}
