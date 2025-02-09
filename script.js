@@ -1,7 +1,12 @@
 function selectOption(option) {
     if (option === 'yes') {
         document.getElementById('question').innerText = 'YAYYY!!!';
-        flashRainbowColors(displayCatSilly); // Flash colors first, then show the silly cat
+
+        // Hide options immediately
+        document.getElementById('options').style.display = 'none';
+
+        // Start rainbow effect, then show silly cat
+        flashRainbowColors(displayCatSilly);
     } else if (option === 'no') {
         var noButton = document.getElementById('no-button');
         noButton.innerText = 'Really?';
@@ -23,12 +28,15 @@ function flashRainbowColors(callback) {
     }, 200); // Change color every 200 milliseconds
 
     setTimeout(function() {
-        clearInterval(interval);
-        document.body.style.backgroundColor = ''; // Reset background color
         if (callback) {
-            callback(); // Call the next function after the effect
+            callback(); // Change the GIF while the effect continues
         }
-    }, 2000); // Flash colors for 2 seconds
+
+        setTimeout(function() {
+            clearInterval(interval);
+            document.body.style.backgroundColor = ''; // Reset background color after everything is done
+        }, 1000); // Keep colors for 1 more second after the GIF changes
+    }, 2000); // Flash colors for 2 seconds before changing the GIF
 }
 
 function displayCat() {
@@ -52,7 +60,6 @@ function displayCatSilly() {
     catSillyImg.alt = 'Silly Cat';
     catSillyImg.onload = function () {
         imageContainer.appendChild(catSillyImg);
-        document.getElementById('options').style.display = 'none';
     };
 }
 
