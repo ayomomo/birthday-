@@ -5,8 +5,11 @@ function selectOption(option) {
         // Hide options immediately
         document.getElementById('options').style.display = 'none';
 
-        // Start rainbow effect, then show silly cat
-        flashRainbowColors(displayCatSilly);
+        // Start the rainbow effect (runs forever)
+        flashRainbowColors();
+
+        // Change the GIF immediately
+        displayCatSilly();
     } else if (option === 'no') {
         var noButton = document.getElementById('no-button');
         noButton.innerText = 'Really?';
@@ -19,24 +22,14 @@ function selectOption(option) {
     }
 }
 
-function flashRainbowColors(callback) {
+function flashRainbowColors() {
     var colors = ['#ff0000', '#ff7f00', '#ffff00', '#00ff00', '#0000ff', '#4b0082', '#9400d3'];
     var i = 0;
-    var interval = setInterval(function() {
+
+    setInterval(function() {
         document.body.style.backgroundColor = colors[i];
         i = (i + 1) % colors.length;
-    }, 200); // Change color every 200 milliseconds
-
-    setTimeout(function() {
-        if (callback) {
-            callback(); // Change the GIF while the effect continues
-        }
-
-        setTimeout(function() {
-            clearInterval(interval);
-            document.body.style.backgroundColor = ''; // Reset background color after everything is done
-        }, 1000); // Keep colors for 1 more second after the GIF changes
-    }, 2000); // Flash colors for 2 seconds before changing the GIF
+    }, 200); // Change color every 200 milliseconds, runs forever
 }
 
 function displayCat() {
