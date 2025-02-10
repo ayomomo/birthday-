@@ -1,12 +1,17 @@
 function selectOption(option) {
     if (option === 'yes') {
-        document.getElementById('question').innerText = 'YAYYY!!!';
+        confetti();
+        document.getElementById('question').innerText = 'YAYYY!!! HAPPY BIRTHDAY POOKIEEE';
 
         // Hide options immediately
         document.getElementById('options').style.display = 'none';
 
-        // Start the rainbow effect (runs forever)
-        flashRainbowColors();
+        playSound('party-horn.mp3');
+
+        setTimeout(function () {
+            playSound('happy-birthday.mp3', true);
+            flashRainbowColors();
+        }, 1000); 
 
         // Change the GIF immediately
         displayCatSilly();
@@ -54,6 +59,12 @@ function displayCatSilly() {
     catSillyImg.onload = function () {
         imageContainer.appendChild(catSillyImg);
     };
+}
+
+function playSound(src, loop = false) {
+    var audio = new Audio(src);
+    audio.loop = loop; // Loop if needed (for Happy Birthday)
+    audio.play().catch(error => console.error("Audio playback failed:", error));
 }
 
 document.addEventListener('DOMContentLoaded', displayCat); // Ensures the function runs after the DOM loads
